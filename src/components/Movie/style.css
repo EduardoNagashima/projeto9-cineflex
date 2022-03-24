@@ -3,9 +3,13 @@
 }
 
 .movie__text {
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 24px;
+    font-size: 24px;
+    margin-top: 25px;
+    margin-bottom: 50px;
 }
 
 .movie__schedule {
@@ -30,7 +34,7 @@
 }
 
 .movie__section-button {
-    margin-top: 22px;
+    margin-top: 27px;
     width: 83px;
     height: 43px;
     color: #fff;

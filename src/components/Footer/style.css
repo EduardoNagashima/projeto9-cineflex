@@ -1,8 +1,9 @@
 footer {
     margin: 0 auto;
-    position: fixed;
+    position: sticky;
     height: 117px;
-    width: 375px;
+    width: 100%;
+    min-width: 375px;
     bottom: 0;
     background: #DFE6ED;
     border: 1px solid #9EADBA;
@@ -16,8 +17,9 @@ footer {
 }
 
 .footer__movie img {
-    width: 48px;
-    height: 72px;
+    width: 100%;
+    padding: 7px;
+    object-fit: cover;
 }
 
 .footer__movie-banner {

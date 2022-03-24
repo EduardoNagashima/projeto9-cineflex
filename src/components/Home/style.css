@@ -34,4 +34,5 @@
 .home__movie-folder img {
     width: 129px;
     height: 193px;
+    object-fit: cover;
 }

@@ -10,6 +10,7 @@ body {
 
 header {
     width: 100%;
+    min-width: 375px;
     height: 67px;
     background-color: #C3CFD9;
     display: flex;
