@@ -1,21 +1,28 @@
 import "./style.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-    const movies = [{ img: "https://html.com/wp-content/uploads/flamingo.webp", alt: 'flamingo' }]
+    const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies").then((response) => {
+            const { data } = response;
+            setMovies(data);
+        }).catch((err) => { console.log(err) })
+    }, []);
 
     return (
         <section className="home">
             <span className="home__text">Selecione o filme</span>
             <div className="home__movies">
-                {movies.map((movie, index) => {
-                    return (
-                        <Link to={"/movie"}>
-                            <div className="movie-folder">
-                                <img key={movie.alt + index} src={movie.img} alt={movie.alt} />
-                            </div>
-                        </Link>
-                    );
+                {movies.map(({ id, posterURL, tittle }) => {
+                    return <Link to={"/movie"}>
+                        <div className="home__movie-folder">
+                            <img key={id} src={posterURL} alt={tittle} />
+                        </div>
+                    </Link>
                 })}
             </div>
         </section>
