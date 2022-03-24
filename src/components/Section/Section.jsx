@@ -8,7 +8,6 @@ export default function Section() {
 
     const [seats, setSeats] = useState([]);
     const [movieSections, setMovieSections] = useState([]);
-    const [selectedSeats, setSelectedSeats] = useState([]);
     const [selectedId, setSelectedId] = useState([]);
     const { sectionId } = useParams();
 
@@ -21,10 +20,14 @@ export default function Section() {
     }, []);
 
     function selected(seat) {
-        setSelectedSeats([...selectedSeats, seat]);
-        setSelectedId([...selectedId, seat.id]);
-        if (selectedSeats) {
-            console.log(selectedSeats.id);
+        if (selectedId.find(el => el === seat.id)) {
+            const array = selectedId.filter(el => {
+                if (seat.id !== el)
+                    return el;
+            });
+            setSelectedId(array);
+        } else {
+            setSelectedId([...selectedId, seat.id]);
         }
     }
 
@@ -42,14 +45,9 @@ export default function Section() {
                             return <div className={css + ' selected'} onClick={() => selected(seat)}>
                                 {index + 1}
                             </div>
-
-                        } else if (isAvailable) {
-                            return <div className={css} onClick={() => selected(seat)}>
-                                {index + 1}
-                            </div>
                         }
 
-                        return <div className={css}>
+                        return <div className={css} onClick={() => { isAvailable ? selected(seat) : alert('Esse assento não está disponível!') }}>
                             {index + 1}
                         </div>
 

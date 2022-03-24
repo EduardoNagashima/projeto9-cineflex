@@ -8,8 +8,8 @@
     justify-content: center;
     text-align: center;
     font-size: 24px;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-bottom: 45px;
 }
 
 .movie__schedule {
@@ -27,6 +27,11 @@
     font-size: 20px;
 }
 
+span.movie__section-date {
+    display: flex;
+    margin-bottom: 22px;
+}
+
 .movie__buttons {
     display: flex;
     justify-content: flex-start;
@@ -34,7 +39,7 @@
 }
 
 .movie__section-button {
-    margin-top: 27px;
+    cursor: pointer;
     width: 83px;
     height: 43px;
     color: #fff;
