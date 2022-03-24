@@ -8,6 +8,8 @@ export default function Section() {
 
     const [seats, setSeats] = useState([]);
     const [movieSections, setMovieSections] = useState([]);
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [selectedId, setSelectedId] = useState([]);
     const { sectionId } = useParams();
 
     useEffect(() => {
@@ -18,6 +20,14 @@ export default function Section() {
         })
     }, []);
 
+    function selected(seat) {
+        setSelectedSeats([...selectedSeats, seat]);
+        setSelectedId([...selectedId, seat.id]);
+        if (selectedSeats) {
+            console.log(selectedSeats.id);
+        }
+    }
+
     return (
         <>
             <section className="section">
@@ -25,11 +35,24 @@ export default function Section() {
                 <div className="section__seats">
                     {seats.map((seat, index) => {
                         const { id, isAvailable } = seat;
-                        const css = isAvailable ? "section__seat" : "section__seat--occupied"
 
-                        return <div className={css} onClick={isAvailable ? () => { css += ' selected' } : () => { }}>
+                        let css = isAvailable ? "section__seat" : "section__seat--occupied";
+
+                        if (isAvailable && selectedId.find(el => el === id)) {
+                            return <div className={css + ' selected'} onClick={() => selected(seat)}>
+                                {index + 1}
+                            </div>
+
+                        } else if (isAvailable) {
+                            return <div className={css} onClick={() => selected(seat)}>
+                                {index + 1}
+                            </div>
+                        }
+
+                        return <div className={css}>
                             {index + 1}
                         </div>
+
                     })}
                 </div>
                 <div className="section__notes">
