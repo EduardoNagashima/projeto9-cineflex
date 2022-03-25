@@ -8,7 +8,7 @@ export default function Footer({ movie }) {
                 <div className="footer__movie-banner">
                     <img src={posterURL} alt={title} />
                 </div>
-                <span className="footer__movie-text">{title}</span>
+                <span className="footer__movie-tittle">{title}</span>
             </div>
         </footer>
     );
