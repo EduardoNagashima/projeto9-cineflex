@@ -2,17 +2,20 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    padding: 24px;
 }
 
 .home__text {
-    font-size: 24px;
-    padding: 35px;
     text-align: center;
-    color: #293845;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 45px;
 }
 
 
 .home__movies {
+    margin: 0 auto;
+    width: 375px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

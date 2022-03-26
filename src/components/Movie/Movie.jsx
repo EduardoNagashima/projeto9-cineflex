@@ -8,12 +8,14 @@ export default function Movie() {
     const { movieId } = useParams();
     const [movieSections, setMovieSections] = useState([]);
     const [days, setDays] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`).then((response) => {
             const { data } = response;
             setDays(data.days);
             setMovieSections(data);
+            setLoading(false);
         }).catch((err) => {
             console.log(err);
         })
@@ -25,24 +27,22 @@ export default function Movie() {
                 <h1 className="movie__text">Selecione o horário</h1>
                 <div className="movie__schedule">
                     {days.map(day => {
-                        const { date, id, showtimes, weekday } = day;
-                        return days && (
-                            <div className="movie__section">
-                                <span className="movie__section-date">{weekday} - {date}</span>
-                                <div className="movie__buttons">
-                                    {showtimes.map(el => {
-                                        return <Link to={`/section/${el.id}`} >
-                                            <button key={el.id} className="movie__section-button"> {el.name}</button>
-                                        </Link>
-                                    })}
-                                </div>
+                        const { date, showtimes, weekday } = day;
+                        return <div className="movie__section">
+                            <span className="movie__section-date">{weekday} - {date}</span>
+                            <div className="movie__buttons">
+                                {showtimes.map(el => {
+                                    return <Link to={`/section/${el.id}`} >
+                                        <button key={el.id} className="movie__section-button"> {el.name}</button>
+                                    </Link>
+                                })}
                             </div>
-                        );
+                        </div>
                     })}
 
                 </div>
             </section>
-            {movieSections && <Footer movie={movieSections} />}
+            {!loading && <Footer movie={movieSections} />}
         </>
     );
 }

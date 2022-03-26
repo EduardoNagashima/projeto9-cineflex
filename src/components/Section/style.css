@@ -1,3 +1,8 @@
+section {
+    margin: 0 auto;
+    width: 375px;
+}
+
 .section h1 {
     font-size: 24px;
     text-align: center;
@@ -6,6 +11,8 @@
 }
 
 .section__seats {
+    margin: 0 auto;
+    width: 375px;
     display: flex;
     align-items: center;
     justify-content: center;
