@@ -1,24 +1,31 @@
-section {
-    margin: 0 auto;
+.section {
     width: 375px;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .section h1 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 24px;
-    margin-top: 24px;
-}
-
-.section__seats {
-    margin: 0 auto;
-    width: 375px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 45px;
+}
+
+.section__seats {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
-    padding: 7px;
-    margin-bottom: 5px;
+    margin: 0 auto;
+    align-items: center;
+    gap: 7px;
+    justify-content: space-between;
 }
 
 .section__seat, .section__seat--occupied, .section__seat--selected {
@@ -29,10 +36,10 @@ section {
     box-sizing: border-box;
     border-radius: 12px;
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin: 5px;
+    align-items: center;
     font-size: 11px;
+    margin-bottom: 16px;
 }
 
 .section__seat--selected {
@@ -47,17 +54,16 @@ section {
 
 .section__notes {
     display: flex;
-    justify-content: space-evenly;
+    width: 100%;
     align-items: center;
+    justify-content: space-around;
     margin-bottom: 45px;
 }
 
 .section__notes div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
 }
 
 .section__note {
@@ -86,24 +92,26 @@ section {
     border: 1px solid #F7C52B;
 }
 
-.section__input {
-    margin-left: 24px;
-    margin-bottom: 57px;
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.section__input p {
+form input {
+    margin-bottom: 57px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
     font-size: 18px;
     color: #293845;
     margin-bottom: 2px;
 }
 
-.section__input p {
-    font-size: 18px;
-    color: #293845;
-    margin-bottom: 4px;
-}
-
-.section__input input {
+form input {
     width: 327px;
     height: 51px;
     background: #FFFFFF;
@@ -115,20 +123,18 @@ section {
     margin-bottom: 15px;
 }
 
-.section__input input::placeholder {
+input::placeholder {
     font-style: italic;
     font-size: 18px;
     color: #AFAFAF;
 }
 
-.section__button {
+form button {
     display: flex;
     align-items: center;
+    align-self: center;
     justify-content: center;
     margin-bottom: 30px;
-}
-
-.section__button button {
     cursor: pointer;
     width: 225px;
     height: 42px;

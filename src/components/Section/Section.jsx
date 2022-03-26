@@ -1,5 +1,5 @@
 import "./style.css"
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Footer from "./../Footer/Footer";
@@ -10,13 +10,18 @@ export default function Section() {
     const [movieSections, setMovieSections] = useState([]);
     const [selectedId, setSelectedId] = useState([]);
     const { sectionId } = useParams();
+    const [loading, setLoading] = useState(true);
+    const [name, setName] = useState('');
+    const [cpf, setCpf] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sectionId}/seats`).then((response) => {
             const { data } = response;
             setMovieSections(data.movie);
             setSeats(data.seats);
-        })
+            setLoading(false);
+        }).catch((err) => console.log(err))
     }, []);
 
     function selected(seat) {
@@ -31,6 +36,22 @@ export default function Section() {
         }
     }
 
+    function sendInfo(e) {
+        e.preventDefault();
+        if (selectedId.length >= 1) {
+            const obj = {
+                ids: selectedId,
+                name: "Fulano",
+                cpf: "12345678900"
+            }
+            console.log(obj);
+            axios.post("https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many", obj).then(
+                navigate("/success")).catch(err => console.log(err));
+        } else {
+            alert('Selecione pelo menos um assento!');
+        }
+    }
+
     return (
         <>
             <section className="section">
@@ -42,7 +63,7 @@ export default function Section() {
                         let css = isAvailable ? "section__seat" : "section__seat--occupied";
 
                         if (isAvailable && selectedId.find(el => el === id)) {
-                            return <div className={css + ' selected'} onClick={() => selected(seat)}>
+                            return <div key={seat + index} className={css + ' selected'} onClick={() => selected(seat)}>
                                 {index + 1}
                             </div>
                         }
@@ -67,21 +88,16 @@ export default function Section() {
                         <span>Indisponível</span>
                     </div>
                 </div>
-                <div className="section__input">
-                    <div className="section__input-name">
-                        <p>Nome do comprador:</p>
-                        <input type="text" placeholder="Digite seu nome..." />
-                    </div>
-                    <div className="section__input-document">
-                        <p>CPF do comprador:</p>
-                        <input type="text" placeholder="Digite seu CPF..." />
-                    </div>
-                </div>
-                <div className="section__button">
-                    <button>Reservar assentos(s)</button>
-                </div>
+                <form onSubmit={sendInfo}>
+                    <label for="name">Nome do comprador:</label>
+                    <input id="name" name="name" type="text" placeholder="Digite seu nome..." required onChange={e => setName(e.target.value)} value={name} />
+                    <label>CPF do comprador:</label>
+                    <input type="text" name="cpf"
+                        placeholder="Digite seu CPF..." required onChange={e => setCpf(e.target.value)} value={cpf} />
+                    <button type="submit">Reservar assentos(s)</button>
+                </form>
             </section>
-            {movieSections && <Footer movie={movieSections} />}
+            {!loading && <Footer movie={movieSections} />}
         </>
     );
 }

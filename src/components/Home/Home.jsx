@@ -18,7 +18,7 @@ export default function Home() {
             <div className="home__movies">
                 {movies.map(({ id, posterURL, tittle }) => {
                     return <Link to={`/movie/${id}`}>
-                        <div className="home__movie-folder">
+                        <div key={id + tittle} className="home__movie-folder">
                             <img key={id} src={posterURL} alt={tittle} />
                         </div>
                     </Link>

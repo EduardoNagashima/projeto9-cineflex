@@ -1,0 +1,56 @@
+.success {
+    padding: 24px;
+    margin: 0 auto;
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #293845;
+}
+
+.success h1 {
+    width: 170px;
+    align-self: center;
+    text-align: center;
+    font-weight: 700;
+    font-size: 24px;
+    color: #247A6B;
+    margin-top: 20px;
+    margin-bottom: 45px;
+    word-wrap: break-word;
+}
+
+.success span {
+    font-weight: 700;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+    margin-bottom: 12px;
+}
+
+.success p {
+    font-weight: 400;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.04em;
+}
+
+.success div {
+    margin-bottom: 40px;
+}
+
+.success button {
+    align-self: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+    width: 225px;
+    height: 42px;
+    background: #E8833A;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 18px;
+    text-align: center;
+    border: none;
+}
