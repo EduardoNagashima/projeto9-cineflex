@@ -1,26 +1,27 @@
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function Success() {
     const navigate = useNavigate();
-
+    const { state } = useLocation();
+    const { buyer, movie, seats } = state;
+    console.log(seats);
     return (
         <section className="success">
             <h1>Pedido feito com sucesso!</h1>
             <div>
                 <span>Filme e sessão</span>
-                <p>Enola Holmes</p>
-                <p>24/06/2021 15:00</p>
+                <p>{movie.movie.title}</p>
+                <p>{movie.day.date} {movie.name}</p>
             </div>
             <div>
                 <span> Ingressos</span >
-                <p>Assento 15</p>
-                <p>Assento 16</p>
+                {seats.map(el => <p>Assento {el}</p>)}
             </div>
             <div>
                 <span>Comprador</span>
-                <p>Nome: João da Silva Sauro</p>
-                <p>CPF: 123.456.789-10</p>
+                <p>Nome: {buyer.name}</p>
+                <p>CPF: {buyer.cpf}</p>
             </div>
             <button onClick={() => navigate("/")}>
                 Voltar para home

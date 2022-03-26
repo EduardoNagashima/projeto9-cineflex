@@ -12,14 +12,15 @@
     margin-bottom: 45px;
 }
 
-
 .home__movies {
     margin: 0 auto;
-    width: 375px;
+    width: auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 30px;
+    row-gap: 11px;
 }
 
 .home__movie-folder {
