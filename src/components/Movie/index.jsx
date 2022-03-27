@@ -1,8 +1,8 @@
-import "./style.css"
-import Footer from "./../Footer/Footer";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import axios from "axios";
+import Footer from "./../Footer";
+import "./style.css"
 
 export default function Movie() {
     const { movieId } = useParams();

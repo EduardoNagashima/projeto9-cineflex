@@ -1,7 +1,7 @@
-import "./style.css";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import "./style.css";
 
 export default function Home() {
     const [movies, setMovies] = useState([]);

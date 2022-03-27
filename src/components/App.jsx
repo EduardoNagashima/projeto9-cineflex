@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./Header/Header";
-import Home from "./Home/Home";
-import Movie from "./Movie/Movie";
-import Section from "./Section/Section";
-import Success from "./Success/Success";
+import Header from "./Header/";
+import Home from "./Home/";
+import Movie from "./Movie/";
+import Section from "./Section/";
+import Success from "./Success/";
 
 export default function App() {
     return (

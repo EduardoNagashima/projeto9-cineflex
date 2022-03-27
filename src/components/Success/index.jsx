@@ -1,5 +1,5 @@
-import "./style.css";
 import { useLocation, useNavigate } from "react-router-dom";
+import "./style.css";
 
 export default function Success() {
     const navigate = useNavigate();

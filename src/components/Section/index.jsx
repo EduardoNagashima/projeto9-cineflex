@@ -1,8 +1,8 @@
-import "./style.css"
-import { useParams, useNavigate, BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import Footer from "./../Footer/Footer";
+import Footer from "./../Footer";
+import "./style.css"
 
 export default function Section() {
 
